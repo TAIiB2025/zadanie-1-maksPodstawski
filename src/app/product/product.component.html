@@ -1,0 +1,26 @@
+<div class="koszyk">
+<table *ngIf="czyZwin" [ngClass]="{'promocja': product.czyPromocja}">
+
+  <tr>
+    <th>Nazwa</th>
+    <th>Cena</th>
+    <th>Data utworzenia</th>
+    <th>Liczba sztuk:</th>
+    <th>Dodaj do koszyka</th>
+  </tr>
+
+  <tr>
+    <td>{{ product.nazwa }}</td>
+    <td>{{ product.cena | currency:'PLN' }}</td>
+    <td>{{ product.dataUtworzenia | date}}r.</td>
+    <td>{{product.liczbaSztuk}}</td>
+    <td><button (click)="dodajDoKoszyka()">Dodaj</button></td>
+  </tr>
+</table>
+
+<div [ngClass]="{'promocja': product.czyPromocja}" *ngIf="!czyZwin" >
+    {{product.nazwa}}
+</div>
+
+<button (click)="czyZwin = !czyZwin">{{czyZwin ? 'Zwin' : 'Rozwin'}}</button>
+</div>
